@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./public/css/output.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Product</h1>
+    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+      <label for="name"> Name Product </label>
+      <input type="text" name="name" id="name" value="<%= product.name %>" />
+      <label for="brand"> Brand </label>
+      <input type="text" name="brand" id="brand" value="<%= product.brand %>" />
+      <label for="color"> Color </label>
+      <input type="text" name="color" id="color" value="<%= product.color %>" />
+      <label for="price"> Price </label>
+      <input type="text" name="price" id="price" value="<%= product.price %>" />
+      <label for="category"> Category </label>
+      <select name="category" id="category">
+        <option value="">Select Category</option>
+        <option value="Aksesoris" <%= product.category == "Aksesoris" ? "selected" : "" %>>Accessories</option>
+        <option value="Baju" <%= product.category == "Baju" ? "selected" : "" %> >Shirt</option>
+        <option value="Celana" <%= product.category == "Celana" ? "selected" : "" %> >Pants</option>
+        <option value="Jaket" <%= product.category == "Jaket" ? "selected" : "" %>>Jacket</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

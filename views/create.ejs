@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./public/css/output.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Product</h1>
+    <form action="/products" method="POST">
+      <label for="name"> Name Product </label>
+      <input type="text" name="name" id="name" />
+      <label for="brand"> Brand </label>
+      <input type="text" name="brand" id="brand" />
+      <label for="color"> Color </label>
+      <input type="text" name="color" id="color" />
+      <label for="price"> Price </label>
+      <input type="text" name="price" id="price" />
+      <label for="category"> Category </label>
+      <select name="category" id="category">
+        <option value="">Select Category</option>
+        <option value="Aksesoris">Accessories</option>
+        <option value="Baju">Shirt</option>
+        <option value="Celana">Pants</option>
+        <option value="Jaket">Jacket</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

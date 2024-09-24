@@ -4,16 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "ejs": "^3.1.10",
     "express": "^4.21.0",
+    "method-override": "^3.0.0",
     "mongoose": "^8.6.3",
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
   }
 }
