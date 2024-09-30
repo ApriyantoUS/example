@@ -13,28 +13,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
     <link href="/css/output.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
     <title>Document</title>
   </head>
   <body>
-    <h1>Product</h1>
-    <form action="/products" method="POST">
-      <label for="name"> Name Product </label>
-      <input type="text" name="name" id="name" />
-      <label for="brand"> Brand </label>
-      <input type="text" name="brand" id="brand" />
-      <label for="color"> Color </label>
-      <input type="text" name="color" id="color" />
-      <label for="price"> Price </label>
-      <input type="text" name="price" id="price" />
-      <label for="category"> Category </label>
-      <select name="category" id="category">
-        <option value="">Select Category</option>
-        <option value="Aksesoris">Accessories</option>
-        <option value="Baju">Shirt</option>
-        <option value="Celana">Pants</option>
-        <option value="Jaket">Jacket</option>
-      </select>
-      <button type="submit">Submit</button>
-    </form>
+    <div class="w-full h-screen flex justify-center flex-col items-center p-2 ">
+      <h2 class="text-center text-3xl font-bold">Login</h2>
+      <div id="register" class="p-2 rounded-md flex justify-center  w-96">
+      <form action="/login" method="POST">
+        <section class="flex flex-col">
+          <label for="email">Email</label>
+          <input class="p-1 w-full border-2 rounded-md border-slate-700" type="email" name="email" required id="email" placeholder="wX4r5@example.com"/></br>
+        </section>
+        <section class="flex flex-col">
+          <label for="password">Password</label>
+          <input class="p-1 w-full border-2 rounded-md border-slate-700" type="password" name="password" required id="password" placeholder="********"></br>
+        </section>
+        <button type="submit" class="border-2 rounded-md border-slate-600 p-1">Register</button>
+      </form>
+    </div>
+  </div>
   </body>
 </html>

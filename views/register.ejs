@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="/css/output.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Register</title>
+  </head>
+  <body class="bg-slate-200">
+    <div class="w-full h-screen flex justify-center flex-col items-center p-2 ">
+      <h2 class="text-center text-3xl font-bold">REGISTER</h2>
+      <div id="register" class="p-2 rounded-md flex justify-center  w-96">
+      <form action="/register" method="POST">
+        <section class="flex flex-col">
+          <label for="username">Username</label>
+          <input class="p-1 w-full border-2 rounded-md border-slate-700" type="text" name="username" required id="username" placeholder="John Doe"/></br>
+        </section>
+        <section class="flex flex-col">
+          <label for="email">Email</label>
+          <input class="p-1 w-full border-2 rounded-md border-slate-700" type="email" name="email" required id="email" placeholder="wX4r5@example.com"/></br>
+        </section>
+        <section class="flex flex-col">
+          <label for="password">Password</label>
+          <input class="p-1 w-full border-2 rounded-md border-slate-700" type="password" name="password" required id="password" placeholder="********"></br>
+        </section>
+        <button type="submit" class="border-2 rounded-md border-slate-600 p-1">Register</button>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>

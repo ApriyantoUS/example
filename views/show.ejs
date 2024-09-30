@@ -3,21 +3,168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./public/css/output.css" rel="stylesheet" />
-    <title><%= product.name %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="/css/output.css" rel="stylesheet" />
+    <title><%= articles.title %></title>
+    <style>
+      .protest-guerrilla-regular {
+        font-family: "Protest Guerrilla", sans-serif;
+      }
+      .lexend-uniquifier {
+        font-family: "Lexend", sans-serif;
+      }
+
+      .blog {
+        width: 800px;
+      }
+
+      .comments {
+        width: 800px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .blog {
+          width: 100%;
+        }
+
+        .comments {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .blog {
+          width: 100%;
+        }
+
+        .comments {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1><%= product.name %></h1>
-    <ul>
-      <li>Brand: <%= product.brand %></li>
-      <li>Price: <%= product.price %></li>
-      <li>Color: <%= product.color %></li>
-      <li>Size: <%= product.size %></li>
-    </ul>
-    <a href="/products">Back</a>
-    <a href="/products/<%= product._id %>/edit">Edit</a>
-    <form action="/products/<%= product._id %>?_method=DELETE" method="POST">
-      <button type="text">Delete</button>
-    </form>
+    <div>
+      <header>
+        <marquee class="text-xl bg-slate-900 text-slate-50 font-serif">Selamat datang di Blog Devtech Hidayah</marquee>
+        <div class="p-5">
+          <h1 class="text-3xl protest-guerrilla-regular">Devtech Hidayah</h1>
+          <h2 class="text-xl">Mari dengan membaca artikel semakin banyak ilmu yang di dapat</h2>
+        </div>
+      </header>
+      <nav id="nav" class="bg-gray-400 backdrop-filter sticky top-0 shadow-md">
+        <div class="navbar">
+          <ul class="list lg:flex md:flex sm:flex gap-2 justify-center font-bold p-3 text-xl lexend-uniquifier hidden">
+            <li><a href="/">HOME</a></li>
+            <li><a href="">ABOUT</a></li>
+            <li><a href="/blogs">BLOG</a></li>
+            <li><a href="">CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main id="main" class="flex flex-col justify-center items-center p-2">
+        <div class="blog my-10 flex flex-col justify-center items-center border-2 rounded-lg">
+          <div class="w-full">
+            <div class="border-b-2 w-full p-2">
+              <img src="<%= articles.image.startsWith('/') ? articles.image : '/' + articles.image %>" alt="Gambar Artikel" class="w-full h-96 object-cover" />
+              <h1 class="text-3xl font-bold"><%= articles.title %></h1>
+              <div class="flex items-center gap-2">
+                <div>
+                  <figure>
+                    <img src="/assets/images/user.png" alt="" class="w-10 h-10" />
+                  </figure>
+                </div>
+                <div>
+                  <h5><%= articles.author %></h5>
+                  <h5>Published on <%= articles.createAt.toLocaleDateString("id-ID",{ weekday : "long", year: "numeric", month: "long", day: "numeric", }) %></h5>
+                </div>
+              </div>
+            </div>
+            <div class="p-2">
+              <ul>
+                <% articles.content.forEach(function(section) { %>
+                <h2 class="mt-2 text-xl font-bold"><%= section.title %></h2>
+                <p class="mt-2"><%= section.paragraph %></p>
+                <ul>
+                  <li><%= section.list %></li>
+                </ul>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="p-2">
+              <h3 class="text-xl font-bold">Share this post</h3>
+              <div class="mt-2">
+                <button class="border-2 rounded-md p-2">
+                  <a href="#"><i class="fa-brands fa-facebook">Facebook</i></a>
+                </button>
+                <button class="border-2 rounded-md p-2">
+                  <a href="#"><i class="fa-brands fa-facebook">Instagram</i></a>
+                </button>
+                <button class="border-2 rounded-md p-2">
+                  <a href="#"><i class="fa-brands fa-facebook">LinkedIn</i></a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="comments p-2 text-xl font-bold border-2 rounded-md min-w-0.5">
+            <h3>Comments :</h3>
+            <ul>
+              <% articles.comments.forEach(function(comment) { %>
+              <li>
+                <div class="text-sm mt-5">
+                  <div class="flex items-center gap-2">
+                    <figure>
+                      <img src="<%= comment.image %>" alt="" class="w-10 h-10" />
+                    </figure>
+                    <span><%= comment.name %></span>
+                    <span class="text-sm font-light"><i><%= new Date(comment.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) %></i></span>
+                  </div>
+                  <div class="mt-2 text-sm font-light border-b-2"><%= comment.comment %></div>
+                </div>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+        <div class="comments p-2 text-xl font-bold border-2 rounded-md min-w-0.5">
+          <h3>Leave a Comment</h3>
+          <form action="" method="POST">
+            <textarea id="" name="comment" placeholder="Share your thoughts..." class="mt-5 border-2 rounded-md p-2 text-sm font-light w-full h-20"></textarea>
+            <button type="submit" class="mt-5 bg-slate-950 rounded-md p-2 text-slate-50 text-sm">Submit Comment</button>
+          </form>
+        </div>
+      </main>
+      <h1><%= articles.name %></h1>
+      <ul>
+        <li>Brand: <%= articles.brand %></li>
+        <li>Price: <%= articles.price %></li>
+        <li>Color: <%= articles.color %></li>
+        <li>Size: <%= articles.size %></li>
+      </ul>
+      <a href="/products">Back</a>
+      <a href="/products/<%= articles._id %>/edit">Edit</a>
+      <form action="/products/<%= articles._id %>?_method=DELETE" method="POST">
+        <button type="text">Delete</button>
+      </form>
+      <footer id="footer" class="bg-slate-900 text-slate-50 p-4">
+        <div>
+          <div></div>
+          <div class="text-center">
+            <p>Privacy Policy | Terms of Use | Contact</p>
+            <p class="text-center">&copy; 2024 Devtech Hidayah</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

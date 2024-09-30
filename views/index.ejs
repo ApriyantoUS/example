@@ -3,19 +3,86 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./public/css/output.css" rel="stylesheet" />
-    <title>Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="/css/output.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <title>DevTech Hidayah</title>
+    <style>
+      #card {
+        width: 300px;
+        height: 500px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Product</h1>
-    <a href="/products/create">Add Product</a>
-    <ul>
-      <% for(let product of products){ %>
-      <li>
-        Name: <%= product.name %> - Price : <%= product.price %>
-        <a href="/products/<%= product._id %> "> Detail </a>
-      </li>
-      <% } %>
-    </ul>
+    <div>
+      <header>
+        <marquee class="text-xl bg-slate-900 text-slate-50 font-serif">Selamat datang di Blog Devtech Hidayah <%= new Date().toLocaleDateString("id-ID",{ weekday: "long", year: "numeric", month: "long", day: "numeric", }) %></marquee>
+        <div class="p-5">
+          <h1 class="text-3xl protest-guerrilla-regular">Devtech Hidayah</h1>
+          <h2 class="text-xl">Mari dengan membaca artikel semakin banyak ilmu yang di dapat</h2>
+        </div>
+      </header>
+      <nav id="nav" class="bg-gray-400 backdrop-filter sticky top-0">
+        <div class="navbar">
+          <ul class="list lg:flex md:flex sm:flex gap-2 justify-center font-bold p-3 text-xl lexend-uniquifier hidden">
+            <li><a href="/">HOME</a></li>
+            <li><a href="">ABOUT</a></li>
+            <li><a href="/blogs">BLOG</a></li>
+            <li><a href="">CONTACT</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main id="main" class="my-10">
+        <div class="border-2 flex justify-center flex-row gap-4 flex-wrap items-center">
+          <% for(let article of articles) { %>
+          <div id="card" class="flex flex-col justify-between border-2 rounded-lg w-96 sm:w-80 md:w-96">
+            <figure>
+              <img src="<%= article.image %>" alt="" loading="lazy" class="w-full h-60 object-cover" />
+            </figure>
+            <div class="p-4">
+              <span class="bg-slate-900 text-slate-50 font-bold text-sm p-2 rounded-lg"><%= article.category%></span>
+              <h2 class="pt-2 text-sm font-bold"><%= article.title %></h2>
+              <p class="pt-2 text-xs"><%= article.summary %></p>
+              <div class="flex justify-between items-center text-slate-500 mt-5">
+                <span class="text-xs">Post on : <%= article.createAt.toLocaleDateString("id-ID") %></span>
+                <button>
+                  <a class="text-xs border-2 rounded-md p-2 text-slate-700" href="/blogs/<%= article._id %> ">Baca Selengkapnya</a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <h1>Product</h1>
+        <a href="/products/create">Add Product</a>
+        <ul>
+          <% for(let article of articles){ %>
+          <li class="list">
+            Name: <%= article.title %>
+            <a href="/products/<%= article._id %> "> Detail </a>
+          </li>
+          <% } %>
+        </ul>
+      </main>
+      <footer id="footer" class="bg-slate-900 text-slate-50 p-4">
+        <div>
+          <div></div>
+          <div class="text-center">
+            <p>Privacy Policy | Terms of Use | Contact</p>
+            <p class="text-center">&copy; 2024 Devtech Hidayah</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
