@@ -72,6 +72,10 @@ app
     res.redirect("/products");
   });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+
 app.get("/*", (req, res) => {
   res.send("<div style='text-align:center; font-size: 50px'>404 </br> NOT FOUND</div>");
 });

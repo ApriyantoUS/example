@@ -35,7 +35,7 @@
         <div class="navbar">
           <ul class="list lg:flex md:flex sm:flex gap-2 justify-center font-bold p-3 text-xl lexend-uniquifier hidden">
             <li><a href="/">HOME</a></li>
-            <li><a href="">ABOUT</a></li>
+            <li><a href="/about">ABOUT</a></li>
             <li><a href="/blogs">BLOG</a></li>
             <li><a href="">CONTACT</a></li>
           </ul>
@@ -62,17 +62,6 @@
           </div>
           <% } %>
         </div>
-
-        <h1>Product</h1>
-        <a href="/products/create">Add Product</a>
-        <ul>
-          <% for(let article of articles){ %>
-          <li class="list">
-            Name: <%= article.title %>
-            <a href="/products/<%= article._id %> "> Detail </a>
-          </li>
-          <% } %>
-        </ul>
       </main>
       <footer id="footer" class="bg-slate-900 text-slate-50 p-4">
         <div>
